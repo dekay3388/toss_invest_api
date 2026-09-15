@@ -28,11 +28,11 @@ REST API와 WebSocket을 지원합니다.
 - [ ] 공통 에러 타입 세분화
 - [ ] 요청 파라미터 사전 검증 추가
 
-## 시작하기
+# 시작하기
 
 자세한 내용은 [시작하기 문서](https://developers.tossinvest.com/docs#heading-시작하기)를 참고해주세요.
 
-### 클라이언트 설정
+## 클라이언트 설정
 
 API를 사용하려면 `client_id`와 `client_secret`을 발급받아야 합니다.
 
@@ -40,7 +40,7 @@ API를 사용하려면 `client_id`와 `client_secret`을 발급받아야 합니�
 2. `설정 > Open API` 메뉴로 이동합니다.
 3. `client_id`와 `client_secret`을 발급받습니다.
 
-### 액세스 토큰 설정
+## 액세스 토큰 설정
 
 클라이언트 설정에서 발급받은 `client_id`와 `client_secret`을 이용해 OAuth 2.0 방식으로 액세스 토큰을 발급받아야 합니다.
 발급받은 액세스 토큰은 API 호출 시 `Authorization` 헤더에 설정해야 하며, 모든 API 요청에 함께 전송됩니다.
@@ -70,7 +70,7 @@ Future<void> initToken() async {
 }
 ```
 
-### (옵션) 계좌 정보 설정
+## (옵션) 계좌 정보 설정
 
 특정 계좌를 대상으로 하는 API를 호출하려면 계좌 시퀀스 번호를 `X-Tossinvest-Account` 헤더에 설정해야 합니다.
 계좌 시퀀스 번호는 `Authorization` 헤더를 설정한 후 계좌 목록 API를 호출하여 확인할 수 있습니다.
