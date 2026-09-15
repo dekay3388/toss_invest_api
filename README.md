@@ -14,8 +14,6 @@ REST API와 WebSocket을 지원합니다.
 
 ### API Coverage
 
-현재 지원하는 API 카테고리입니다.
-
 - [x] 인증
 - [x] 시세·종목 정보
 - [x] 계좌·자산
