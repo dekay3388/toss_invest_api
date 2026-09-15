@@ -81,13 +81,18 @@ Future<void> initToken() async {
 
 ```dart
 Future<void> initAccount() async {
-  // 계좌 조회
+  // 계좌 정보 조회
   final accountApi = TossInvestApi.instance.account;
   final result = await accountApi.getAccounts();
   final accounts = result.data;
   final account = accounts.first;
 
-  // 헤더 설정
+  // 조회된 계좌 정보
+  print(account.accountSeq);
+  print(account.accountType);
+  print(account.accountType);
+
+  // 계좌 정보 설정
   final header = TossInvestApi.instance.header;
   header.xTossInvestAccount = account.xTossInvestAccount;
   // 또는 header.xTossInvestAccount = account.accountSeq;
