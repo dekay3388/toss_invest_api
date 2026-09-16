@@ -1,3 +1,9 @@
+## 0.1.0-dev.5
+
+- Added order APIs.
+- Added conditional order APIs.
+- Fixed HTTP communication issues.
+
 ## 0.1.0-dev.4
 
 - Updated README.md documentation

@@ -1,6 +1,6 @@
 name: toss_invest_api
 description: "Unofficial Dart package for Toss Invest Open API with REST API and WebSocket support."
-version: 0.1.0-dev.4
+version: 0.1.0-dev.5
 
 homepage: https://github.com/dekay3388/toss_invest_api
 repository: https://github.com/dekay3388/toss_invest_api
