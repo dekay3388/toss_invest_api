@@ -7,29 +7,13 @@
 [토스증권 Open API 공식 문서](https://developers.tossinvest.com/docs)
 를 참고해주세요.
 
-<!-- TOC -->
-* [Toss Invest Open API](#toss-invest-open-api)
-    * [Warning](#warning)
-    * [API Coverage](#api-coverage)
-    * [TODO List](#todo-list)
-* [시작하기](#시작하기)
-  * [클라이언트 설정](#클라이언트-설정)
-  * [액세스 토큰 설정](#액세스-토큰-설정)
-  * [(옵션) 계좌 정보 설정](#옵션-계좌-정보-설정)
-* [사용하기](#사용하기)
-  * [RestApi 사용](#restapi-사용)
-    * [호출](#호출)
-    * [응답](#응답)
-    * [예제](#예제)
-  * [WebSocket 사용](#websocket-사용)
-    * [연결](#연결)
-    * [송신 (PING)](#송신-ping)
-    * [송신 (구독)](#송신-구독)
-    * [수신](#수신)
-    * [종료](#종료)
-    * [예제](#예제-1)
-* [테스트 하기](#테스트-하기)
-<!-- TOC -->
+### Table of Contents
+
+- [시작하기](#시작하기)
+- [사용하기](#사용하기)
+    - [RestApi 사용](#restapi-사용)
+    - [WebSocket 사용](#websocket-사용)
+- [테스트하기](#테스트하기)
 
 ### Warning
 
@@ -362,7 +346,7 @@ Future<void> exampleWebSocket() async {
 }
 ```
 
-# 테스트 하기
+# 테스트하기
 
 본 패키지는 실제 토스증권 서버에 요청을 보내지 않고도
 애플리케이션 로직을 검증할 수 있도록 테스트 API 구성을 지원합니다.
