@@ -64,6 +64,46 @@ enum OrderType implements JsonValueEnum {
 }
 
 @JsonEnum(valueField: "value")
+enum ConditionalType implements JsonValueEnum {
+  stop("STOP"),
+  profitRate("PROFIT_RATE");
+
+  @override
+  final String value;
+
+  const ConditionalType(this.value);
+}
+
+@JsonEnum(valueField: "value")
+enum ConditionalOrderType implements JsonValueEnum {
+  single("SINGLE"),
+  oco("OCO"),
+  oto("OTO");
+
+  @override
+  final String value;
+
+  const ConditionalOrderType(this.value);
+}
+
+@JsonEnum(valueField: "value")
+enum ConditionalOrderStatus implements JsonValueEnum {
+  watching("WATCHING"),
+  holding("HOLDING"),
+  paused("PAUSED"),
+  ordering("ORDERING"),
+  ordered("ORDERED"),
+  completed("COMPLETED"),
+  expired("EXPIRED"),
+  canceled("CANCELED");
+
+  @override
+  final String value;
+
+  const ConditionalOrderStatus(this.value);
+}
+
+@JsonEnum(valueField: "value")
 enum OrderSide implements JsonValueEnum {
   buy("BUY"),
   sell("SELL");
@@ -78,7 +118,7 @@ enum OrderSide implements JsonValueEnum {
 enum TimeInForce implements JsonValueEnum {
   day("DAY"),
   cls("CLS"),
-  opg("SELL");
+  opg("OPG");
 
   @override
   final String value;
@@ -216,7 +256,7 @@ enum OrderStatus implements JsonValueEnum {
   rejected("REJECTED"),
   cancelRejected("CANCEL_REJECTED"),
   replaceRejected("REPLACE_REJECTED"),
-  replaced("REPLACE_REJECTED"),
+  replaced("REPLACED"),
   ;
 
   @override

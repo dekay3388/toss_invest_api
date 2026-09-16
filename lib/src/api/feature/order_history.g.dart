@@ -81,13 +81,13 @@ const _$OrderStatusEnumMap = {
   OrderStatus.rejected: 'REJECTED',
   OrderStatus.cancelRejected: 'CANCEL_REJECTED',
   OrderStatus.replaceRejected: 'REPLACE_REJECTED',
-  OrderStatus.replaced: 'REPLACE_REJECTED',
+  OrderStatus.replaced: 'REPLACED',
 };
 
 const _$TimeInForceEnumMap = {
   TimeInForce.day: 'DAY',
   TimeInForce.cls: 'CLS',
-  TimeInForce.opg: 'SELL',
+  TimeInForce.opg: 'OPG',
 };
 
 Value? _$JsonConverterFromJson<Json, Value>(
