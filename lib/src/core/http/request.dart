@@ -17,39 +17,49 @@ Future<HttpResponse> httpRequest({
 }) async {
   final startMs = DateTime.now().millisecondsSinceEpoch;
 
-  final uri = Uri.parse("https://openapi.tossinvest.com/$path");
-  log("toss:http: --> uri      : (${method.name}) $uri");
+  final newUrl = Uri.parse("https://openapi.tossinvest.com/$path");
+  log("toss:http: --> uri      : (${method.name}) $newUrl");
 
   final newHeaders = {
     "Content-Type": switch (contentType) {
       .json => "application/json",
       .urlencoded => "application/x-www-form-urlencoded",
+      .none => null,
     },
     if (httpHeader.authorization.isNotEmpty)
       Header.authorizationKey: httpHeader.authorization,
     if (httpHeader.xTossInvestAccount.isNotEmpty)
       Header.xTossInvestAccountKey: httpHeader.xTossInvestAccount,
     ...headers.nonNulls.map((k, v) => MapEntry(k, "$v")),
-  };
+  }.nonNulls;
   log("toss:http: --> headers  : $newHeaders");
 
   final newParams = params.nonNulls.map(
     (k, v) => MapEntry(k, objectToJson(v)),
   );
-  final query = Uri(queryParameters: newParams).query;
-  log("toss:http: --> params   : $query");
+  log("toss:http: --> params   : $newParams");
 
   final response = switch (method) {
     .get => await http.get(
-      uri.replace(query: query),
+      newUrl.replace(query: Uri(queryParameters: newParams).query),
       headers: newHeaders,
     ),
     .post => await http.post(
-      uri,
+      newUrl,
       headers: newHeaders,
       body: switch (contentType) {
         .json => jsonEncode(newParams),
-        .urlencoded => query,
+        .urlencoded => Uri(queryParameters: newParams).query,
+        .none => Uri(queryParameters: newParams).query,
+      },
+    ),
+    .delete => await http.delete(
+      newUrl,
+      headers: newHeaders,
+      body: switch (contentType) {
+        .json => jsonEncode(newParams),
+        .urlencoded => Uri(queryParameters: newParams).query,
+        .none => Uri(queryParameters: newParams).query,
       },
     ),
   };

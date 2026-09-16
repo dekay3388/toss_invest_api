@@ -8,9 +8,11 @@ final class HttpHeader._() {
 enum HttpMethod {
   get,
   post,
+  delete,
 }
 
 enum ContentType {
   json,
   urlencoded,
+  none,
 }

@@ -1,13 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:toss_invest_api/src/common/collection.dart';
 import 'package:toss_invest_api/src/core/model/date.dart';
 
-String objectToJson(Object object) {
+dynamic objectToJson(Object object) {
   return switch (object) {
     JsonValueEnum() => object.value,
     List<JsonValueEnum>() => object.map((e) => e.value).join(","),
     Date() => dateToJson(object),
     DateTime() => DateTimeConverter().toJson(object),
-    _ => object.toString(),
+    Map() => object.map((k, v) => MapEntry(k, objectToJson(v))).nonNulls,
+    _ => object,
   };
 }
 

@@ -12,11 +12,14 @@ final class const HttpResponse({
     return HttpResponse(
       code: response.statusCode,
       header: response.headers,
-      body: jsonDecode(response.body),
+      body: switch (response.body.isEmpty) {
+        true => {},
+        false => jsonDecode(response.body),
+      },
     );
   }
 
-  bool get isSuccess => code == 200;
+  bool get isSuccess => 200 <= code && code < 300;
 
   bool get isFailure => !isSuccess;
 
