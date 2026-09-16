@@ -7,6 +7,30 @@
 [토스증권 Open API 공식 문서](https://developers.tossinvest.com/docs)
 를 참고해주세요.
 
+<!-- TOC -->
+* [Toss Invest Open API](#toss-invest-open-api)
+    * [Warning](#warning)
+    * [API Coverage](#api-coverage)
+    * [TODO List](#todo-list)
+* [시작하기](#시작하기)
+  * [클라이언트 설정](#클라이언트-설정)
+  * [액세스 토큰 설정](#액세스-토큰-설정)
+  * [(옵션) 계좌 정보 설정](#옵션-계좌-정보-설정)
+* [사용하기](#사용하기)
+  * [RestApi 사용](#restapi-사용)
+    * [호출](#호출)
+    * [응답](#응답)
+    * [예제](#예제)
+  * [WebSocket 사용](#websocket-사용)
+    * [연결](#연결)
+    * [송신 (PING)](#송신-ping)
+    * [송신 (구독)](#송신-구독)
+    * [수신](#수신)
+    * [종료](#종료)
+    * [예제](#예제-1)
+* [테스트 하기](#테스트-하기)
+<!-- TOC -->
+
 ### Warning
 
 - 토스증권에서 공식적으로 제공하거나 지원하는 패키지가 아닙니다.
@@ -338,4 +362,75 @@ Future<void> exampleWebSocket() async {
 }
 ```
 
+# 테스트 하기
 
+본 패키지는 실제 토스증권 서버에 요청을 보내지 않고도
+애플리케이션 로직을 검증할 수 있도록 테스트 API 구성을 지원합니다.
+
+`TossInvestApi`에서 사용하는 각 API는 인터페이스 형태로 분리되어 있으며,
+테스트에서는 필요한 API 인터페이스를 직접 구현한 뒤 `TossInvestApi`에 주입할 수 있습니다.
+
+이를 통해 실제 네트워크 연결이나 액세스 토큰, 계좌 정보 없이도
+원하는 응답을 직접 구성하여 테스트할 수 있습니다.
+
+테스트 API를 활용하면 다음과 같은 상황을 쉽게 검증할 수 있습니다.
+
+* 특정 API가 원하는 데이터를 반환하는 경우
+* 빈 목록이나 특정 값이 반환되는 경우
+* 애플리케이션에서 예상하지 못한 데이터가 반환되는 경우
+* API 호출 결과를 기반으로 동작하는 비즈니스 로직
+* 네트워크 환경과 관계없이 동일한 결과가 필요한 단위 테스트
+
+실제 API를 호출하지 않기 때문에 테스트 실행 결과가
+네트워크 상태나 서버 상태에 영향을 받지 않으며, 테스트에 필요한 데이터를 직접 구성할 수 있다는 장점이 있습니다.
+
+예를 들어 계좌 목록 API를 테스트하려면 `AccountApi`를 구현한 테스트용 클래스를
+작성할 수 있습니다.
+
+```dart
+class AccountTestApi implements AccountApi {
+  @override
+  Future<SuccessResponse<List<Account>>> getAccounts() async {
+    return SuccessResponse<List<Account>>(
+      code: 200,
+      header: {},
+      body: {},
+      data: [
+        Account(
+          accountNo: "...",
+          accountSeq: "...",
+          accountType: .brokerage,
+        ),
+      ],
+    );
+  }
+}
+```
+
+작성한 테스트 API는 `TossInvestApi` 생성 시 해당 API에 주입합니다.
+
+```dart
+Future<void> accountApiTest() async {
+  final testApi = TossInvestApi(
+    account: AccountTestApi(),
+  );
+
+  final result = await testApi.account.getAccounts();
+  final accounts = result.data;
+
+  final account = accounts[1];
+  print(account);
+}
+```
+
+위 테스트 API는 하나의 계좌만 반환하도록 구성되어 있으므로
+`accounts[1]`에 접근하면 범위를 벗어나 예외가 발생합니다.
+
+이처럼 테스트에 필요한 응답 데이터를 직접 정의하여 정상적인 상황뿐만 아니라
+빈 데이터, 잘못된 인덱스 접근, 특정 조건에서의 분기 처리 등
+다양한 애플리케이션 동작을 검증할 수 있습니다.
+
+또한 전체 API를 테스트용으로 교체할 필요는 없으며,
+테스트가 필요한 API만 선택적으로 구현하여 주입할 수 있습니다.
+이를 통해 실제 코드 구조를 크게 변경하지 않고도 각
+기능을 독립적으로 테스트할 수 있습니다.
