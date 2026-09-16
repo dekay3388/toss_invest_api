@@ -13,7 +13,8 @@ abstract interface class OrderApi {
   Future<SuccessResponse<OrderResponse>> createOrder({
     String? accountSeq,
     required OrderType orderType,
-    required String quantity,
+    String? quantity,
+    String? orderAmount,
     required OrderSide side,
     required String symbol,
     String? clientOrderId,

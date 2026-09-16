@@ -18,7 +18,7 @@ abstract interface class OrderHistoryApi {
     DateTime? from,
     DateTime? to,
     String? cursor,
-    int limit,
+    int? limit,
   });
 
   /// ### 주문 상세 조회
