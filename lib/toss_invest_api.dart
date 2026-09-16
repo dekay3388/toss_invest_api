@@ -16,9 +16,14 @@ import 'package:toss_invest_api/src/api/model/header.dart';
 import 'package:toss_invest_api/src/core/feature/account.dart';
 import 'package:toss_invest_api/src/core/feature/asset.dart';
 import 'package:toss_invest_api/src/core/feature/auth.dart';
+import 'package:toss_invest_api/src/core/feature/conditional_order.dart';
+import 'package:toss_invest_api/src/core/feature/conditional_order_history.dart';
 import 'package:toss_invest_api/src/core/feature/market_data.dart';
 import 'package:toss_invest_api/src/core/feature/market_indicators.dart';
 import 'package:toss_invest_api/src/core/feature/market_info.dart';
+import 'package:toss_invest_api/src/core/feature/order.dart';
+import 'package:toss_invest_api/src/core/feature/order_history.dart';
+import 'package:toss_invest_api/src/core/feature/order_info.dart';
 import 'package:toss_invest_api/src/core/feature/ranking.dart';
 import 'package:toss_invest_api/src/core/feature/stock_info.dart';
 import 'package:toss_invest_api/src/core/feature/web_socket.dart';
@@ -55,11 +60,11 @@ final class TossInvestApi {
     marketIndicators: MarketIndicatorsApiImpl(),
     account: AccountApiImpl(),
     asset: AssetApiImpl(),
-    // order: throw UnimplementedError(),
-    // orderHistory: throw UnimplementedError(),
-    // orderInfo: throw UnimplementedError(),
-    // conditionalOrder: throw UnimplementedError(),
-    // conditionalOrderHistory: throw UnimplementedError(),
+    order: OrderApiImpl(),
+    orderHistory: OrderHistoryApiImpl(),
+    orderInfo: OrderInfoApiImpl(),
+    conditionalOrder: ConditionalOrderApiImpl(),
+    conditionalOrderHistory: ConditionalOrderHistoryApiImpl(),
     webSocket: WebSocketApiImpl(),
   );
 
