@@ -1,3 +1,10 @@
+## 1.0.0
+
+- 정식 버전 배포
+- RestApi 기능 지원
+- WebSocket 기능 지원
+- Test 기능 지원
+
 ## 0.1.0-dev.5
 
 - Added order APIs.
