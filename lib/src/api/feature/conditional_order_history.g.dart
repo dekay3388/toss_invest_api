@@ -41,11 +41,10 @@ _ConditionalOrderDetailResponse _$ConditionalOrderDetailResponseFromJson(
   status: $enumDecode(_$ConditionalOrderStatusEnumMap, json['status']),
   symbol: json['symbol'] as String,
   type: $enumDecode(_$ConditionalOrderTypeEnumMap, json['type']),
-  expireDate: json['expireDate'] == null
-      ? null
-      : ConditionalOrderCondition.fromJson(
-          json['expireDate'] as Map<String, dynamic>,
-        ),
+  expireDate: _$JsonConverterFromJson<String, DateTime>(
+    json['expireDate'],
+    const DateTimeConverter().fromJson,
+  ),
   second: json['second'] == null
       ? null
       : ConditionalOrderCondition.fromJson(
@@ -65,7 +64,10 @@ Map<String, dynamic> _$ConditionalOrderDetailResponseToJson(
   'status': _$ConditionalOrderStatusEnumMap[instance.status]!,
   'symbol': instance.symbol,
   'type': _$ConditionalOrderTypeEnumMap[instance.type]!,
-  'expireDate': instance.expireDate,
+  'expireDate': _$JsonConverterToJson<String, DateTime>(
+    instance.expireDate,
+    const DateTimeConverter().toJson,
+  ),
   'second': instance.second,
 };
 
@@ -92,6 +94,16 @@ const _$ConditionalOrderTypeEnumMap = {
   ConditionalOrderType.oco: 'OCO',
   ConditionalOrderType.oto: 'OTO',
 };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) => json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) => value == null ? null : toJson(value);
 
 _ConditionalOrderCondition _$ConditionalOrderConditionFromJson(
   Map<String, dynamic> json,

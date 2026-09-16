@@ -298,7 +298,7 @@ as String?,
 /// @nodoc
 mixin _$ConditionalOrderDetailResponse {
 
- String get conditionalOrderId;@DateTimeConverter() DateTime get createdAt; ConditionalOrderCondition get first; MarketCountry get market; OrderType get orderType; String get quantity; ConditionalOrderStatus get status; String get symbol; ConditionalOrderType get type;@DateTimeConverter() ConditionalOrderCondition? get expireDate; ConditionalOrderCondition? get second;
+ String get conditionalOrderId;@DateTimeConverter() DateTime get createdAt; ConditionalOrderCondition get first; MarketCountry get market; OrderType get orderType; String get quantity; ConditionalOrderStatus get status; String get symbol; ConditionalOrderType get type;@DateTimeConverter() DateTime? get expireDate; ConditionalOrderCondition? get second;
 /// Create a copy of ConditionalOrderDetailResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -336,11 +336,11 @@ abstract mixin class $ConditionalOrderDetailResponseCopyWith<$Res>  {
   factory $ConditionalOrderDetailResponseCopyWith(ConditionalOrderDetailResponse value, $Res Function(ConditionalOrderDetailResponse) _then) = _$ConditionalOrderDetailResponseCopyWithImpl;
 @useResult
 $Res call({
- String conditionalOrderId,@DateTimeConverter() DateTime createdAt, ConditionalOrderCondition first, MarketCountry market, OrderType orderType, String quantity, ConditionalOrderStatus status, String symbol, ConditionalOrderType type,@DateTimeConverter() ConditionalOrderCondition? expireDate, ConditionalOrderCondition? second
+ String conditionalOrderId,@DateTimeConverter() DateTime createdAt, ConditionalOrderCondition first, MarketCountry market, OrderType orderType, String quantity, ConditionalOrderStatus status, String symbol, ConditionalOrderType type,@DateTimeConverter() DateTime? expireDate, ConditionalOrderCondition? second
 });
 
 
-$ConditionalOrderConditionCopyWith<$Res> get first;$ConditionalOrderConditionCopyWith<$Res>? get expireDate;$ConditionalOrderConditionCopyWith<$Res>? get second;
+$ConditionalOrderConditionCopyWith<$Res> get first;$ConditionalOrderConditionCopyWith<$Res>? get second;
 
 }
 /// @nodoc
@@ -365,7 +365,7 @@ as String,status: null == status ? _self.status : status // ignore: cast_nullabl
 as ConditionalOrderStatus,symbol: null == symbol ? _self.symbol : symbol // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as ConditionalOrderType,expireDate: freezed == expireDate ? _self.expireDate : expireDate // ignore: cast_nullable_to_non_nullable
-as ConditionalOrderCondition?,second: freezed == second ? _self.second : second // ignore: cast_nullable_to_non_nullable
+as DateTime?,second: freezed == second ? _self.second : second // ignore: cast_nullable_to_non_nullable
 as ConditionalOrderCondition?,
   ));
 }
@@ -377,18 +377,6 @@ $ConditionalOrderConditionCopyWith<$Res> get first {
   
   return $ConditionalOrderConditionCopyWith<$Res>(_self.first, (value) {
     return _then(_self.copyWith(first: value));
-  });
-}/// Create a copy of ConditionalOrderDetailResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$ConditionalOrderConditionCopyWith<$Res>? get expireDate {
-    if (_self.expireDate == null) {
-    return null;
-  }
-
-  return $ConditionalOrderConditionCopyWith<$Res>(_self.expireDate!, (value) {
-    return _then(_self.copyWith(expireDate: value));
   });
 }/// Create a copy of ConditionalOrderDetailResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -484,7 +472,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String conditionalOrderId, @DateTimeConverter()  DateTime createdAt,  ConditionalOrderCondition first,  MarketCountry market,  OrderType orderType,  String quantity,  ConditionalOrderStatus status,  String symbol,  ConditionalOrderType type, @DateTimeConverter()  ConditionalOrderCondition? expireDate,  ConditionalOrderCondition? second)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String conditionalOrderId, @DateTimeConverter()  DateTime createdAt,  ConditionalOrderCondition first,  MarketCountry market,  OrderType orderType,  String quantity,  ConditionalOrderStatus status,  String symbol,  ConditionalOrderType type, @DateTimeConverter()  DateTime? expireDate,  ConditionalOrderCondition? second)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ConditionalOrderDetailResponse() when $default != null:
 return $default(_that.conditionalOrderId,_that.createdAt,_that.first,_that.market,_that.orderType,_that.quantity,_that.status,_that.symbol,_that.type,_that.expireDate,_that.second);case _:
@@ -505,7 +493,7 @@ return $default(_that.conditionalOrderId,_that.createdAt,_that.first,_that.marke
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String conditionalOrderId, @DateTimeConverter()  DateTime createdAt,  ConditionalOrderCondition first,  MarketCountry market,  OrderType orderType,  String quantity,  ConditionalOrderStatus status,  String symbol,  ConditionalOrderType type, @DateTimeConverter()  ConditionalOrderCondition? expireDate,  ConditionalOrderCondition? second)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String conditionalOrderId, @DateTimeConverter()  DateTime createdAt,  ConditionalOrderCondition first,  MarketCountry market,  OrderType orderType,  String quantity,  ConditionalOrderStatus status,  String symbol,  ConditionalOrderType type, @DateTimeConverter()  DateTime? expireDate,  ConditionalOrderCondition? second)  $default,) {final _that = this;
 switch (_that) {
 case _ConditionalOrderDetailResponse():
 return $default(_that.conditionalOrderId,_that.createdAt,_that.first,_that.market,_that.orderType,_that.quantity,_that.status,_that.symbol,_that.type,_that.expireDate,_that.second);case _:
@@ -525,7 +513,7 @@ return $default(_that.conditionalOrderId,_that.createdAt,_that.first,_that.marke
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String conditionalOrderId, @DateTimeConverter()  DateTime createdAt,  ConditionalOrderCondition first,  MarketCountry market,  OrderType orderType,  String quantity,  ConditionalOrderStatus status,  String symbol,  ConditionalOrderType type, @DateTimeConverter()  ConditionalOrderCondition? expireDate,  ConditionalOrderCondition? second)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String conditionalOrderId, @DateTimeConverter()  DateTime createdAt,  ConditionalOrderCondition first,  MarketCountry market,  OrderType orderType,  String quantity,  ConditionalOrderStatus status,  String symbol,  ConditionalOrderType type, @DateTimeConverter()  DateTime? expireDate,  ConditionalOrderCondition? second)?  $default,) {final _that = this;
 switch (_that) {
 case _ConditionalOrderDetailResponse() when $default != null:
 return $default(_that.conditionalOrderId,_that.createdAt,_that.first,_that.market,_that.orderType,_that.quantity,_that.status,_that.symbol,_that.type,_that.expireDate,_that.second);case _:
@@ -552,7 +540,7 @@ class _ConditionalOrderDetailResponse implements ConditionalOrderDetailResponse 
 @override final  ConditionalOrderStatus status;
 @override final  String symbol;
 @override final  ConditionalOrderType type;
-@override@DateTimeConverter() final  ConditionalOrderCondition? expireDate;
+@override@DateTimeConverter() final  DateTime? expireDate;
 @override final  ConditionalOrderCondition? second;
 
 /// Create a copy of ConditionalOrderDetailResponse
@@ -590,11 +578,11 @@ abstract mixin class _$ConditionalOrderDetailResponseCopyWith<$Res> implements $
   factory _$ConditionalOrderDetailResponseCopyWith(_ConditionalOrderDetailResponse value, $Res Function(_ConditionalOrderDetailResponse) _then) = __$ConditionalOrderDetailResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String conditionalOrderId,@DateTimeConverter() DateTime createdAt, ConditionalOrderCondition first, MarketCountry market, OrderType orderType, String quantity, ConditionalOrderStatus status, String symbol, ConditionalOrderType type,@DateTimeConverter() ConditionalOrderCondition? expireDate, ConditionalOrderCondition? second
+ String conditionalOrderId,@DateTimeConverter() DateTime createdAt, ConditionalOrderCondition first, MarketCountry market, OrderType orderType, String quantity, ConditionalOrderStatus status, String symbol, ConditionalOrderType type,@DateTimeConverter() DateTime? expireDate, ConditionalOrderCondition? second
 });
 
 
-@override $ConditionalOrderConditionCopyWith<$Res> get first;@override $ConditionalOrderConditionCopyWith<$Res>? get expireDate;@override $ConditionalOrderConditionCopyWith<$Res>? get second;
+@override $ConditionalOrderConditionCopyWith<$Res> get first;@override $ConditionalOrderConditionCopyWith<$Res>? get second;
 
 }
 /// @nodoc
@@ -619,7 +607,7 @@ as String,status: null == status ? _self.status : status // ignore: cast_nullabl
 as ConditionalOrderStatus,symbol: null == symbol ? _self.symbol : symbol // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as ConditionalOrderType,expireDate: freezed == expireDate ? _self.expireDate : expireDate // ignore: cast_nullable_to_non_nullable
-as ConditionalOrderCondition?,second: freezed == second ? _self.second : second // ignore: cast_nullable_to_non_nullable
+as DateTime?,second: freezed == second ? _self.second : second // ignore: cast_nullable_to_non_nullable
 as ConditionalOrderCondition?,
   ));
 }
@@ -632,18 +620,6 @@ $ConditionalOrderConditionCopyWith<$Res> get first {
   
   return $ConditionalOrderConditionCopyWith<$Res>(_self.first, (value) {
     return _then(_self.copyWith(first: value));
-  });
-}/// Create a copy of ConditionalOrderDetailResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$ConditionalOrderConditionCopyWith<$Res>? get expireDate {
-    if (_self.expireDate == null) {
-    return null;
-  }
-
-  return $ConditionalOrderConditionCopyWith<$Res>(_self.expireDate!, (value) {
-    return _then(_self.copyWith(expireDate: value));
   });
 }/// Create a copy of ConditionalOrderDetailResponse
 /// with the given fields replaced by the non-null parameter values.

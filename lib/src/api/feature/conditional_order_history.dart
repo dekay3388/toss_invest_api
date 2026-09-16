@@ -58,7 +58,7 @@ abstract class ConditionalOrderDetailResponse
     required ConditionalOrderStatus status,
     required String symbol,
     required ConditionalOrderType type,
-    @DateTimeConverter() ConditionalOrderCondition? expireDate,
+    @DateTimeConverter() DateTime? expireDate,
     ConditionalOrderCondition? second,
   }) = _ConditionalOrderDetailResponse;
 
