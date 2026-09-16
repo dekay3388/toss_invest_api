@@ -18,7 +18,7 @@ Future<HttpResponse> httpRequest({
   final startMs = DateTime.now().millisecondsSinceEpoch;
 
   final newUrl = Uri.parse("https://openapi.tossinvest.com/$path");
-  log("toss:http: --> uri      : (${method.name}) $newUrl");
+  log("toss:http: --> uri      : [${method.name}] $newUrl");
 
   final newHeaders = {
     "Content-Type": switch (contentType) {

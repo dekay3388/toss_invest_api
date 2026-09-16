@@ -9,7 +9,7 @@ dynamic objectToJson(Object object) {
     Date() => dateToJson(object),
     DateTime() => DateTimeConverter().toJson(object),
     Map() => object.map((k, v) => MapEntry(k, objectToJson(v))).nonNulls,
-    _ => object,
+    _ => "$object",
   };
 }
 
