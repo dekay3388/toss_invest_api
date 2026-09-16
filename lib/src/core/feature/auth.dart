@@ -12,6 +12,7 @@ final class AuthApiImpl implements AuthApi {
   }) => run(() async {
     final response = await httpRequest(
       method: .post,
+      contentType: .urlencoded,
       path: "oauth2/token",
       params: {
         "client_id": clientId,
